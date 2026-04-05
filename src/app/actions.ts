@@ -5,7 +5,6 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getNotifyEmail, getResendKey } from "@/lib/env";
 import { Resend } from "resend";
 
 // ──────────────────────────────────────────────
@@ -153,8 +152,15 @@ function sendNotificationEmail(data: {
   preferredDate: string | undefined;
   preferredTime: string | undefined;
 }) {
-  const resend = new Resend(getResendKey());
-  const to = getNotifyEmail();
+  const resendKey = process.env.RESEND_API_KEY;
+  const to = process.env.NOTIFY_EMAIL;
+
+  // Skip if email is not configured
+  if (!resendKey || !to || resendKey.startsWith("re_plchldgr") || to.includes("placeholder")) {
+    return Promise.resolve();
+  }
+
+  const resend = new Resend(resendKey);
 
   const typeLabels: Record<string, string> = {
     pickup: "Machine Pickup",
