@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { LoginForm } from "./form";
 
 export const metadata: Metadata = {
-  title: "Admin Login — Riyadh Gym Workshop",
+  title: "Admin Login — Dammam Gym Workshop",
 };
 
 export default async function AdminLoginPage() {

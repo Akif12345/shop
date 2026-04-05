@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Admin Dashboard — Riyadh Gym Workshop",
+  title: "Admin Dashboard — Dammam Gym Workshop",
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

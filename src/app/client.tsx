@@ -7,12 +7,12 @@ type Language = "en" | "ar";
 
 const copy = {
   en: {
-    brand: "Riyadh FitFix",
+    brand: "Dammam FitFix",
     navServices: "Services",
     navProcess: "Process",
     navContact: "Contact",
     switchLabel: "AR",
-    heroEyebrow: "Riyadh treadmill repair, belt supply, and setup support",
+    heroEyebrow: "Dammam treadmill repair, belt supply, and setup support",
     heroTitle1: "KEEP YOUR",
     heroTitle2: "MACHINES",
     heroTitle3: "RUNNING",
@@ -22,7 +22,7 @@ const copy = {
     secondaryCta: "View Services",
     trust1Title: "Quick Response",
     trust1Desc: "Most requests are reviewed the same day.",
-    trust2Title: "Riyadh Coverage",
+    trust2Title: "Dammam Coverage",
     trust2Desc: "Home, gym, and commercial locations supported.",
     trust3Title: "Expert Team",
     trust3Desc: "Specialized treadmill and gym-machine handling.",
@@ -52,7 +52,7 @@ const copy = {
     ctaDesc:
       "We will connect all buttons to live forms next, step by step.",
     ctaButton: "Start Booking",
-    footer: "Riyadh FitFix Workshop",
+    footer: "Dammam FitFix Workshop",
     adminLink: "Admin",
     arrow: "→",
   },
@@ -62,7 +62,7 @@ const copy = {
     navProcess: "الخطوات",
     navContact: "تواصل",
     switchLabel: "EN",
-    heroEyebrow: "صيانة أجهزة المشي وتوفير الأحزمة وخدمات التركيب في الرياض",
+    heroEyebrow: "صيانة أجهزة المشي وتوفير الأحزمة وخدمات التركيب في الدمام",
     heroTitle1: "حافظ على",
     heroTitle2: "أجهزتك",
     heroTitle3: "بأفضل أداء",
@@ -72,7 +72,7 @@ const copy = {
     secondaryCta: "عرض الخدمات",
     trust1Title: "استجابة سريعة",
     trust1Desc: "معظم الطلبات تتم مراجعتها في نفس اليوم.",
-    trust2Title: "تغطية الرياض",
+    trust2Title: "تغطية الدمام",
     trust2Desc: "ندعم المنازل والصالات والمواقع التجارية.",
     trust3Title: "فريق متخصص",
     trust3Desc: "خبرة عالية في أجهزة المشي ومعدات الجيم.",
@@ -100,7 +100,7 @@ const copy = {
     ctaTitle: "جاهز للحجز؟",
     ctaDesc: "الخطوة القادمة: ربط كل الأزرار بنماذج حجز فعلية.",
     ctaButton: "ابدأ الحجز",
-    footer: "ورشة فت فكس - الرياض",
+    footer: "ورشة فت فكس - الدمام",
     adminLink: "لوحة التحكم",
     arrow: "←",
   },
@@ -268,7 +268,7 @@ export function HomePageClient() {
                 <p className="mt-2 text-2xl font-bold">Response</p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/60">Riyadh</p>
+                <p className="text-xs uppercase tracking-[0.16em] text-white/60">Dammam</p>
                 <p className="mt-2 text-2xl font-bold">Coverage</p>
               </div>
               <div className="col-span-2 rounded-2xl border border-[#d44a1a]/40 bg-[#d44a1a]/10 p-4">
