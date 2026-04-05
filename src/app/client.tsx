@@ -121,6 +121,7 @@ const processKeys = [
 
 export function HomePageClient() {
   const [language, setLanguage] = useState<Language>("en");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isArabic = language === "ar";
 
   useEffect(() => {
@@ -128,7 +129,18 @@ export function HomePageClient() {
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
   }, [isArabic, language]);
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [language]);
+
   const t = useMemo(() => copy[language], [language]);
+
+  const navItems = [
+    { label: t.navServices, href: "#services" },
+    { label: t.navProcess, href: "#process" },
+    { label: t.navContact, href: "#contact" },
+    { label: t.adminLink, href: "/admin" },
+  ];
 
   return (
     <div className="min-h-screen bg-[#f5f3ef] text-[#111] transition-colors duration-200">
@@ -137,6 +149,8 @@ export function HomePageClient() {
           <Link href="/" className="text-base font-semibold tracking-wide sm:text-lg">
             {t.brand}
           </Link>
+
+          {/* Desktop nav */}
           <nav className="hidden items-center gap-6 md:flex">
             <a href="#services" className="text-sm text-black/70 transition hover:text-black">
               {t.navServices}
@@ -154,14 +168,64 @@ export function HomePageClient() {
               {t.adminLink}
             </Link>
           </nav>
+
+          {/* Mobile controls */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              onClick={() => setLanguage(isArabic ? "en" : "ar")}
+              className="rounded-full border border-black/20 px-2.5 py-1 text-xs font-semibold tracking-wide transition hover:border-black"
+            >
+              {t.switchLabel}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex h-9 w-9 items-center justify-center rounded-lg transition hover:bg-black/5"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Desktop language toggle */}
           <button
             type="button"
             onClick={() => setLanguage(isArabic ? "en" : "ar")}
-            className="rounded-full border border-black/20 px-3 py-1.5 text-xs font-semibold tracking-wide transition hover:border-black"
+            className="hidden rounded-full border border-black/20 px-3 py-1.5 text-xs font-semibold tracking-wide transition hover:border-black md:block"
           >
             {t.switchLabel}
           </button>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="border-t border-black/10 bg-white md:hidden">
+            <nav className="mx-auto max-w-6xl px-4 py-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
+                    item.href === "/admin"
+                      ? "text-black/40"
+                      : "text-black/80 hover:bg-black/5"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
       <main>
