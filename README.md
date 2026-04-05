@@ -1,5 +1,5 @@
 # Workshop web app setup (Next.js + Supabase)
-This project is prepared for a Riyadh workshop website with bilingual support, booking/order forms, and Supabase-backed request storage.
+This project is prepared for a Dammam workshop website with bilingual support, booking/order forms, and Supabase-backed request storage.
 
 ## Getting started
 Install dependencies:

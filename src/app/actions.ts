@@ -196,7 +196,7 @@ function sendNotificationEmail(data: {
   `;
 
   return resend.emails.send({
-    from: "Riyadh FitFix <onboarding@resend.dev>",
+    from: "Dammam FitFix <onboarding@resend.dev>",
     to: [to],
     subject: `New ${typeLabels[data.requestType] ?? data.requestType} Request — ${data.customerName}`,
     html,

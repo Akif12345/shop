@@ -19,7 +19,7 @@ const notoSansArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "Riyadh Gym Workshop",
+  title: "Dammam Gym Workshop",
   description: "Repair, setup, and treadmill belt ordering platform.",
 };
 
