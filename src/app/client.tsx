@@ -119,7 +119,7 @@ const processKeys = [
   { title: "step4Title", desc: "step4Desc" },
 ] as const;
 
-export function HomePageClient({ isAdmin }: { isAdmin: boolean }) {
+export function HomePageClient() {
   const [language, setLanguage] = useState<Language>("en");
   const isArabic = language === "ar";
 
@@ -147,14 +147,12 @@ export function HomePageClient({ isAdmin }: { isAdmin: boolean }) {
             <a href="#contact" className="text-sm text-black/70 transition hover:text-black">
               {t.navContact}
             </a>
-            {isAdmin && (
-              <Link
-                href="/admin"
-                className="rounded-full border border-black/20 px-3 py-1 text-xs font-medium text-black/50 transition hover:border-black hover:text-black"
-              >
-                {t.adminLink}
-              </Link>
-            )}
+            <Link
+              href="/admin"
+              className="rounded-full border border-black/20 px-3 py-1 text-xs font-medium text-black/50 transition hover:border-black hover:text-black"
+            >
+              {t.adminLink}
+            </Link>
           </nav>
           <button
             type="button"
@@ -305,17 +303,7 @@ export function HomePageClient({ isAdmin }: { isAdmin: boolean }) {
       <footer className="border-t border-black/10 bg-white py-6">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 px-4 text-sm text-black/65 sm:flex-row sm:px-6">
           <p>{t.footer}</p>
-          <div className="flex items-center gap-3">
-            <p>© 2026</p>
-            {isAdmin && (
-              <Link
-                href="/admin"
-                className="rounded-full border border-black/10 px-2.5 py-0.5 text-xs text-black/30 transition hover:border-black hover:text-black"
-              >
-                {t.adminLink}
-              </Link>
-            )}
-          </div>
+          <p>© 2026</p>
         </div>
       </footer>
     </div>
