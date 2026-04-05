@@ -27,3 +27,15 @@ export function getServiceRoleKey() {
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   }).SUPABASE_SERVICE_ROLE_KEY;
 }
+
+export function getResendKey() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key || key === "placeholder") throw new Error("RESEND_API_KEY is not configured.");
+  return key;
+}
+
+export function getNotifyEmail() {
+  const email = process.env.NOTIFY_EMAIL;
+  if (!email || email === "placeholder") throw new Error("NOTIFY_EMAIL is not configured.");
+  return email;
+}
