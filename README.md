@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Workshop web app setup (Next.js + Supabase)
+This project is prepared for a Riyadh workshop website with bilingual support, booking/order forms, and Supabase-backed request storage.
 
-## Getting Started
-
-First, run the development server:
-
+## Getting started
+Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create local environment file:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Fill in:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run the app:
+```bash
+npm run dev
+```
 
-## Learn More
+## Database setup (Supabase)
+1. Create a free Supabase project.
+2. Open SQL Editor.
+3. Run `supabase/schema.sql`.
+4. Confirm `service_requests` table exists.
 
-To learn more about Next.js, take a look at the following resources:
+## Important project paths
+- `src/lib/supabase/browser.ts`: browser client.
+- `src/lib/supabase/server.ts`: server client for App Router.
+- `src/lib/supabase/admin.ts`: service-role admin client (server-only).
+- `supabase/schema.sql`: request table schema and security baseline.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Mobile-first requirement
+- Build and test every page for small screens first (320px–430px range).
+- Keep touch targets comfortably tappable.
+- Prevent horizontal overflow in all sections.
+- Verify forms are easy to use with on-screen keyboard.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Next implementation step
+Integrate your selected frontend UI into `src/app/page.tsx` (or split into components) and connect booking/order forms to `service_requests`.
