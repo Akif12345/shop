@@ -136,10 +136,6 @@ export async function submitServiceRequest(
   return { success: true, message: "Request submitted successfully! We will contact you soon." };
 }
 
-// ──────────────────────────────────────────────
-// Email notifications
-// ──────────────────────────────────────────────
-
 function sendNotificationEmail(data: {
   requestType: string;
   customerName: string;
