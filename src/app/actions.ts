@@ -131,7 +131,7 @@ export async function submitServiceRequest(
     locationDetails: (data as any).locationDetails,
     preferredDate: (data as any).preferredDate,
     preferredTime: (data as any).preferredTime,
-  }).catch((e) => console.error("Email notification failed:", e));
+  }).catch((e) => console.error("[EMAIL NOTIFICATION FAILED]", e));
 
   return { success: true, message: "Request submitted successfully! We will contact you soon." };
 }
@@ -151,8 +151,11 @@ function sendNotificationEmail(data: {
   const resendKey = process.env.RESEND_API_KEY;
   const to = process.env.NOTIFY_EMAIL;
 
+  console.log("[EMAIL DEBUG] ResendKey:", !!resendKey, "NotifyEmail:", to);
+
   // Skip if email is not configured
   if (!resendKey || !to || resendKey.startsWith("re_plchldgr") || to.includes("placeholder")) {
+    console.log("[EMAIL DEBUG] Skipped - env vars not configured");
     return Promise.resolve();
   }
 
@@ -196,6 +199,8 @@ function sendNotificationEmail(data: {
     to: [to],
     subject: `New ${typeLabels[data.requestType] ?? data.requestType} Request — ${data.customerName}`,
     html,
+  }).catch((err) => {
+    console.error("[EMAIL ERROR]", err?.message || err);
   });
 }
 
