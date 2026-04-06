@@ -169,39 +169,33 @@ Build a trustworthy, conversion-focused service website that helps users in Riya
 
 ## 15) Development Status (Updated 5 April 2026)
 
-### 15.1 Completed
-- **Homepage (`/`)**: Full landing page with hero section, trust badges, services cards, process steps, CTA block, footer. Bilingual (EN/AR) with manual language toggle.
+### 15.1 Completed — All MVP Items ✅
+- **Homepage (`/`)**: Full landing page with hero section, trust badges, services cards, process steps, CTA block, footer. Bilingual (EN/AR) with manual language toggle. Admin link in header nav. Mobile hamburger menu.
 - **Booking Hub (`/book`)**: Card grid with links to all 4 booking types. Bilingual (EN/AR).
-- **Booking Sub-pages (placeholders)**: All 4 routes created as stubs — `/book/pickup`, `/book/repair`, `/book/belt-order`, `/book/setup`. Each has title, description, and "coming soon" placeholder. Ready for form implementation.
-- **Supabase clients wired**: 3 clients created (`server.ts`, `browser.ts`, `admin.ts`) with Zod-validated env access.
-- **Environment file**: `.env.local` created with placeholder Supabase credentials. Real values needed before DB integration.
-- **Build passes**: All 7 routes compile and render as static pages. Dev server runs on `localhost:3000`.
-
-### 15.2 Pending — Frontend
-- **Shared components**: Header, footer, language toggle, cards, etc. should be extracted into reusable components.
-- **Arabic font**: Currently falls back to browser default. Needs an Arabic-supporting font (e.g. Noto Sans Arabic).
-- **RTL polish**: Ensure proper RTL layout, text alignment, and spacing in Arabic mode.
-- **Dark mode**: CSS variables defined in `globals.css` but not wired to actual page components.
-- **Error / loading / not-found pages**: None exist yet.
-
-### 15.3 Completed (Updated 5 April 2026)
-- **Server actions**: `src/app/actions.ts` handles submission, fetching, and status updates for all request types.
-- **Pickup form** (`/book/pickup`): Full form — name, phone, email, machine brand/model, issue description, pickup address, preferred date/time, notes. Validates and submits to `service_requests`.
+- **Pickup form** (`/book/pickup`): Full form — name, phone, email, machine brand/model, issue description, pickup address, preferred date/time, notes. Zod validation. Supabase submission.
 - **Repair form** (`/book/repair`): Full form — name, phone, email, machine brand/model (model optional), issue description, optional location/date/time, notes.
 - **Belt order form** (`/book/belt-order`): Full form — name, phone, email, machine brand/model, belt size (optional), quantity, delivery address, notes.
 - **Setup form** (`/book/setup`): Full form — name, phone, email, location type selector (gym/home/other), installation address, machine brand/model (optional), machine details, preferred date/time, notes.
 - **All forms**: Bilingual (EN/AR), Zod validation with inline error display, loading state during submission, success/error feedback, auto-reset on success.
-- **Admin dashboard** (`/admin`): Filterable table of all requests by status and type. Detail modal with full request info. One-click status updates (new → contacted → scheduled → completed → cancelled). Bilingual (EN/AR).
+- **Supabase DB**: `service_requests` table with enums (`request_type`, `request_status`), indexes, RLS, auto `updated_at` trigger. Schema applied to live project.
+- **Admin dashboard** (`/admin`): Filterable table of all requests by status and type. Detail modal with full request info. One-click status updates. Bilingual (EN/AR). Protected by Supabase Auth.
+- **Admin login** (`/admin/login`): Email/password login with Supabase Auth. Middleware-based route protection.
+- **Email notifications**: Resend integration — every form submission sends a formatted HTML email to `shadowviners@gmail.com` with request details and dashboard link.
+- **Arabic font**: Noto Sans Arabic loaded via `next/font` for proper RTL rendering.
+- **Error/loading/not-found pages**: Branded 404 page, error boundary with reset, animated loading spinner.
+- **Mobile menu**: Hamburger menu with Services, Process, Contact, Admin links on mobile.
+- **Deployed**: Live on Vercel at `https://shop-indol-five-88.vercel.app/`. All 5 environment variables configured.
+- **City**: Changed from Riyadh to Dammam across all text (EN + AR).
 
-### 15.4 Remaining — Backend & Database
-- **Database schema**: Applied to live Supabase project ✅ (ran successfully).
-- **Auth**: Supabase Auth for admin login not yet set up.
-- **Admin panel**: Not yet built. Planned scope: list/filter requests, update status, view contact details.
-- **Notifications**: Email alerts (Resend/Brevo) and form spam protection (Cloudflare Turnstile) not yet integrated.
+### 15.2 Remaining — Nice-to-Have
+- **Shared components**: Header, footer, language toggle, cards could be extracted into reusable components.
+- **Dark mode**: CSS variables defined but not wired to components.
+- **Cloudflare Turnstile**: Form spam protection (only matters if spam actually comes in).
+- **Image upload**: For customers to attach photos of their machine issues.
 
-### 15.5 Branch Info
-- Active working branch: `working`
-- All development should happen on this branch.
+### 15.3 Branch Info
+- Active working branch: `working` (merged to `master` for deployment)
+- All development should happen on `working` branch.
 
 ## 16) Next Step
-Build the admin dashboard to view/manage incoming service requests. Then add auth protection and notifications.
+MVP is complete and deployed. Next steps could include: analytics setup, domain configuration, image uploads, or iterating based on real user feedback.
