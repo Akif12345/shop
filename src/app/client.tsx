@@ -9,7 +9,7 @@ type Language = "en" | "ar";
 const copy = {
   en: {
     brand: "Dammam FitFix",
-    brandBadge: "by Prof. Tufel Ahmad",
+    brandBadge: "by Prof. Tufail Ahmad",
     brandSkills: "Belt Setup & Board Repair Specialist",
     navServices: "Services",
     navProcess: "Process",
