@@ -276,55 +276,55 @@ export function HomePageClient() {
       </header>
 
       <main>
-        <section className="mx-auto grid w-full max-w-6xl gap-6 px-4 pb-10 pt-8 sm:px-6 sm:pt-10 md:grid-cols-2 md:gap-0">
-          <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm md:rounded-r-none md:p-10">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-black/55">
-              {t.heroEyebrow}
-            </p>
-            <h1 className="mt-5 text-4xl font-black leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
-              {t.heroTitle1}
-              <br />
-              <span className="text-[#d44a1a]">{t.heroTitle2}</span>
-              <br />
-              {t.heroTitle3}
-            </h1>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-black/70 sm:text-base">
-              {t.heroSub}
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/book"
-                className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-[#d44a1a]"
-              >
-                {t.primaryCta}
-                <span aria-hidden>{t.arrow}</span>
-              </Link>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 rounded-full border border-black/20 px-5 py-3 text-sm font-medium transition hover:border-black"
-              >
-                {t.secondaryCta}
-                <span aria-hidden>{t.arrow}</span>
-              </a>
-            </div>
+        {/* Hero Section with Background Video */}
+        <section className="relative mx-auto w-full max-w-6xl overflow-hidden sm:px-6">
+          {/* Video Background */}
+          <div className="absolute inset-0 z-0">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-cover"
+            >
+              <source src="/videos/hero-loop.mp4" type="video/mp4" />
+            </video>
+            {/* Brand-colored dark overlay — lighter so video is visible */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#d44a1a]/40 via-black/35 to-[#1a0800]/50" />
           </div>
-          <div className="rounded-3xl border border-black/10 bg-[#10100f] p-6 text-white shadow-sm md:rounded-l-none md:p-10">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/60">24h</p>
-                <p className="mt-2 text-2xl font-bold">Response</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/60">Dammam</p>
-                <p className="mt-2 text-2xl font-bold">Coverage</p>
-              </div>
-              <div className="col-span-2 rounded-2xl border border-[#d44a1a]/40 bg-[#d44a1a]/10 p-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-[#ffb79d]">
-                  Mobile-first UX
-                </p>
-                <p className="mt-2 text-lg font-semibold">
-                  Arabic + English with smooth direction switching.
-                </p>
+
+          {/* Hero Content - White text on video */}
+          <div className="relative z-10 px-4 pb-10 pt-8 sm:px-0 sm:pt-10">
+            <div className="mx-auto max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/90">
+                {t.heroEyebrow}
+              </p>
+              <h1 className="mt-5 text-4xl font-black leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {t.heroTitle1}
+                <br />
+                <span className="text-[#ffb79d]">{t.heroTitle2}</span>
+                <br />
+                {t.heroTitle3}
+              </h1>
+              <p className="mt-5 max-w-xl text-sm leading-7 text-white/90 sm:text-base">
+                {t.heroSub}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/book"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#d44a1a] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#bf3f15]"
+                >
+                  {t.primaryCta}
+                  <span aria-hidden>{t.arrow}</span>
+                </Link>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+                >
+                  {t.secondaryCta}
+                  <span aria-hidden>{t.arrow}</span>
+                </a>
               </div>
             </div>
           </div>
